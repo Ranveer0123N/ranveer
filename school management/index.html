@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Robo Student Login</title>
+    <style>
+        /* General Body Styling */
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Container Styling */
+        .container {
+            text-align: center;
+            padding: 30px;
+            border: 2px solid #58a6ff;
+            border-radius: 10px;
+            background-color: #161b22;
+            box-shadow: 0 0 15px #58a6ff;
+            width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-transform: uppercase;
+            color: #58a6ff;
+        }
+
+        /* Input Fields */
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #58a6ff;
+            border-radius: 5px;
+            background: transparent;
+            color: #c9d1d9;
+            font-size: 1em;
+            outline: none;
+            box-shadow: 0 0 10px rgba(88, 166, 255, 0.5);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        input:focus {
+            box-shadow: 0 0 15px #58a6ff;
+        }
+
+        /* Button Styling */
+        button {
+            padding: 10px 20px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #58a6ff, #238636);
+            color: #ffffff;
+            font-size: 1em;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 10px #58a6ff;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #238636, #58a6ff);
+            box-shadow: 0 0 20px #58a6ff;
+        }
+
+        /* Message Display */
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #f85149;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Login</h1>
+        <form id="loginForm">
+            <input type="text" id="studentId" placeholder="Enter Student ID" required><br>
+            <input type="password" id="passcode" placeholder="Enter Passcode" required><br>
+            <button type="button" onclick="login()">Login</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        // Mock database of 40 students
+        const students = {
+            "rs": { name: "Ranveer", passcode: "2013" },
+            "dev": { name: "Rudrendra", passcode: "dev2012" },
+            "desi": { name: "akshat", passcode: "boy" },
+            "#admaya": { name: "adamya", passcode: "alpha" },
+            "shaurya": { name: "shauryaveer", passcode: "veer" },
+            "106": { name: "Kiran", passcode: "qwerty" },
+            "107": { name: "Anjali", passcode: "asdf" },
+            "108": { name: "Aditya", passcode: "zxcv" },
+            "109": { name: "Ravi", passcode: "pass123" },
+            "110": { name: "Priya", passcode: "hello" },
+            "111": { name: "Raj", passcode: "welcome" },
+            "112": { name: "Sneha", passcode: "java123" },
+            "113": { name: "Amit", passcode: "python" },
+            "114": { name: "Mohan", passcode: "robotics" },
+            "115": { name: "Reema", passcode: "science" },
+            "116": { name: "Kabir", passcode: "coding" },
+            "117": { name: "Tanya", passcode: "secure" },
+            "118": { name: "Soham", passcode: "matrix" },
+            "119": { name: "Pooja", passcode: "linear" },
+            "120": { name: "Rohit", passcode: "algebra" },
+            "121": { name: "Rahul", passcode: "calc101" },
+            "122": { name: "Ayesha", passcode: "logic" },
+            "123": { name: "Sahil", passcode: "node123" },
+            "124": { name: "Meera", passcode: "async" },
+            "125": { name: "Dev", passcode: "await" },
+            "126": { name: "Arnav", passcode: "123xyz" },
+            "127": { name: "Nidhi", passcode: "alpha" },
+            "128": { name: "Shreya", passcode: "beta" },
+            "129": { name: "Ishaan", passcode: "gamma" },
+            "130": { name: "Avni", passcode: "delta" },
+            "131": { name: "Nakul", passcode: "theta" },
+            "132": { name: "Tanvi", passcode: "omega" },
+            "133": { name: "Varun", passcode: "phi" },
+            "134": { name: "Manav", passcode: "sigma" },
+            "135": { name: "Pari", passcode: "lambda" },
+            "136": { name: "Siddharth", passcode: "kappa" },
+            "137": { name: "Vidhi", passcode: "zeta" },
+            "138": { name: "Abhi", passcode: "eta" },
+            "harsh": { name: "Harsh", passcode: "sir" },
+            "mohd": { name: "Ata sir", passcode: "ata" }
+        };
+
+        // Login function
+        function login() {
+            const studentId = document.getElementById('studentId').value;
+            const passcode = document.getElementById('passcode').value;
+            const messageDiv = document.getElementById('message');
+
+            // Clear any previous messages
+            messageDiv.textContent = '';
+            messageDiv.className = 'message';
+
+            if (students[studentId] && students[studentId].passcode === passcode) {
+                // Redirect to the dashboard
+                window.location.href = `dashboard.html?name=${students[studentId].name}`;
+            } else {
+                messageDiv.textContent = 'Invalid ID or Passcode. Please try again.';
+                messageDiv.className = 'message error';
+            }
+        }
+    </script>
+</body>
+</html>

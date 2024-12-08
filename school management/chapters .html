@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management - Subjects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #58a6ff;
+            margin-bottom: 20px;
+        }
+
+        .subject-section, .chapter-section {
+            margin: 20px auto;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .subject-title {
+            font-size: 1.5em;
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+
+        .chapter-card {
+            background-color: #161b22;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+
+        footer a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>School Management - Subjects</h1>
+    <p>Select a subject to view the chapters and download the work.</p>
+
+    <!-- Subject Section -->
+    <div class="subject-section">
+        <div class="subject-title">Physics</div>
+
+        <!-- Chapter 1 -->
+        <div class="chapter-card">
+            <p>Chapter 1: Introduction to Physics</p>
+            <a href="pdfs/physics_chapter1.pdf" download>Download PDF</a>
+        </div>
+
+        <!-- Chapter 2 -->
+        <div class="chapter-card">
+            <p>Chapter 2: Motion and Forces</p>
+            <a href="pdfs/physics_chapter2.pdf" download>Download PDF</a>
+        </div>
+
+        <!-- Chapter 3 -->
+        <div class="chapter-card">
+            <p>Chapter 3: Energy and Work</p>
+            <a href="pdfs/physics_chapter3.pdf" download>Download PDF</a>
+        </div>
+    </div>
+
+    <!-- Add More Subjects Here -->
+    <div class="subject-section">
+        <div class="subject-title">Chemistry</div>
+
+        <!-- Chapter 1 -->
+        <div class="chapter-card">
+            <p>Chapter 1: Chemical Reactions</p>
+            <a href="pdfs/chemistry_chapter1.pdf" download>Download PDF</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        Made with ❤ by <a href="https://yourschoolmanagement.com" target="_blank">Your School Management</a>
+    </footer>
+</body>
+</html>
